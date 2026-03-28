@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C++ to LaTeX Converter</title>
+  
+  <!-- KaTeX Default CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+  
+  <!-- Custom Design System -->
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1 class="app-title">
+      🧮 MathRenderer <span style="color: var(--text-muted); font-weight: 400; margin-left: 8px;">- Vanilla HTML Preview</span>
+    </h1>
+  </header>
+
+  <main class="split-view">
+    <!-- Editor Pane -->
+    <div class="pane editor-pane">
+      <div class="pane-header">
+        <h2 class="pane-title">C++ Input</h2>
+        <button class="action-btn" id="copy-btn" title="Copy Math">
+           📋
+        </button>
+      </div>
+      <div class="editor-container" id="monaco-container"></div>
+    </div>
+
+    <!-- Preview Pane -->
+    <div class="pane preview-pane">
+      <div class="pane-header">
+        <h2 class="pane-title">LaTeX Rendering</h2>
+        <div class="header-actions">
+           <button class="action-btn text-btn" id="copy-code-btn" title="Copy Code">
+             <span class="btn-text">📋 Copy Code</span>
+           </button>
+        </div>
+      </div>
+      
+      <div class="preview-container">
+        <div id="katex-error" class="katex-error" style="display: none;">
+           <span class="error-title">Parsing Error</span>
+           <pre id="error-msg"></pre>
+        </div>
+        
+        <div id="katex-display" class="katex-display-wrapper"></div>
+        
+        <div class="raw-latex">
+            <div class="raw-header">Raw LaTeX:</div>
+            <code id="raw-latex-text">\text{Enter math on the left}</code>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- KaTeX Script (Load synchronously before AMD loader to prevent UMD conflict) -->
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  
+  <!-- Monaco Editor Script Loading via AMD -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.46.0/min/vs/loader.min.js"></script>
+  
+  <!-- Main Application Logic -->
+  <script defer src="./script.js"></script>
+</body>
+</html>
